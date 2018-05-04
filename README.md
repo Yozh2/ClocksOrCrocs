@@ -1,52 +1,58 @@
 # ClocksOrCrocs
-Clock and crocodile recognition and classification on images using deep learning.
+Распознавание и классификация часов и крокодилов на изображениях с использованием глубоких нейронных сетей.
 
-[Read this in Russian][russian]
+[Read this in English][english]
 
-## Task
+## Задача
 
-To build a classifier that separates images from the given dataset: a crocodile or a clock. To specify the accuracy obtained of the model.
+Построить классификатор, разделяющий изображения из полученного датасета: крокодил или часы. Указать полученную точность распознавания.
 
-## Solution
+## Решение
 
-To classify images, the dataset given was divided into training, validation and test samples in the ratio of `0.7`:` 0.15`: `0.15`, respectively. See more in [`dataset_preparation.ipynb`][dataset_preparation].
+Для классификации изображений данный датасет был разбит на обучающую, проверочную и тестовую выборки в соотношении `0.7` : `0.15` : `0.15` соответственно. Cм. [`dataset_preparation.ipynb`][dataset_preparation]
 
-Based on the pre-trained VGG16 neural network, a classifier was constructed using the **Keras** library with the **Tensorflow** backend.
+На основе предобученной нейронной сети VGG16 построен классификатор с использованием библиотеки **Keras** c бэк-эндом **Tensorflow**.  
 
-The classifier was trained, the accuracy obtained on the test data is `87.5%`. To increase the accuracy of the classification, fine-tuning of the last layer of the pre-trained VGG16 neural network was made. Achieved classification accuracy: `93.75%` on the test data. See [`NN_Train.ipynb`][train] with a detailed step-by-step description.
+Произведено обучение классификатора, полученная точность на тестовых данных: `87.5%`. Для увеличения точности классификации произведен fine-tuning последнего слоя предобученной нейросети VGG16. Достигнутая точность классификации: `93.75%` на тестовой выборке. См. [`NN_Train.ipynb`][train] с подробным пошаговым описанием описанием.
 
-As a demonstration, the trained neural network was tested on random images of clocks and crocodiles found on the Internet. See more in [`NN_Test.ipynb`][test].
+В качестве дополнения и демонстрации обученная нейросеть протестирована на случайных изображениях часов и крокодила, найденных в Интернете. См. [`NN_Test.ipynb`][test]
 
-## Conclusions and future plans
+## Выводы и планы на будущее
 
-The classifier performed well on the test dataset and even was able to recognize some random images from the Internet. To improve the results, it is planned to train this classifier on a more complex pre-trained neural network (InceptionV3), to do more detailed fine-tuning. To speed up the training process, it is planned to make feature analysis, when the pre-trained neural network extracts the features, and then the classifier learns on the features separately, which significantly speeds up the learning process.
+Классификатор неплохо себя показал на тестовой выборке и даже смог распознать некоторые случайные изображения из сети. Чтобы улучшить результаты работы классификатора, планируется:
 
-## Repository structure
-- [clocks_crocodiles][c_c] = Initial dataset from the given archive.
-- [data][data] - Processed dataset, sorted by train, validation and test folders.
-- [redist][redist] - Archives with datasets, convenient for downloading.
-- [trained_net][t_net] - Saved trained model for fast loading into your projects. No need to train anew.
+- Сделать data augmentation (дополнение данных), сгенерировав больше изображений путём сдвига/поворота/растяжения имеющихся.
+- Сделать более детальный fine-tuning
+- Обучить данный классификатор на более сложной предобученной нейросети (InceptionV3)
+- Для ускорения обучения планируется сделать анализ признаков, когда предобученная нейросеть получает признаки, а потом классификатор обучается на признаках отдельно, что существенно ускоряет процесс.
+- Если мы не ограничены только данным датасетом, было бы здорово обучить классификатор по большему датасету. Изображения с часами и крокодилами можно взять из ImageNet'a или выкачать по поисковым запросам с помощью python-скрипта. Это позволит сделать классификатор более точным, поскольку выборки для обучения и валидации будут больше.
 
-## Installation and usage
-To use, you must install all dependency packages for Python3. Use `pip3` to quickly and easily install everything you need.
+## Структура репозитория
+- [clocks_crocodiles][c_c] = Исходный датасет из задания.
+- [data][data] - Обработанный датасет, рассортированный по папкам для обучения, валидации, тестирования.
+- [redist][redist] - Архивы с датасетами, удобные для скачивания.
+- [trained_net][t_net] - Директория с сохранённой обученной моделью для быстрой загрузки (не нужно обучать заново).
 
-`` `bash
+## Установка и использование
+Для использования необходимо установить все пакеты-зависимости для Python. Используйте `pip` для быстрой и простой установки всего, что необходимо.
+
+```bash
 pip3 install -r requirements.txt
-`` `
+```
 
-To train the neural network and evaluate it's accuracy, use [NN_Train.ipynb][train].
+Чтобы обучить нейронную сеть и получить данные о её точности, откройте [NN_Train.ipynb][train].
 
-To test the trained model on any images, use [NN_Test.ipynb][test]
+Чтобы проверить обученную нейросеть на любых изображениях, откройте [NN_Test.ipynb][test]
 
 ### Google Colaboratory
-This neural network was trained and tested in the Jupyter Notebook analogue - the Google cloud API with GPU acceleration `Google Colaboratory`. It is recommended to train the neural network there, since it is faster. In notebooks (`* .ipynb`) there are code cells for normal work with Google Colaboratory. If you work on a local PC, do not execute these cells.
+Данная нейросеть обучалась и тестировалась в аналоге Jupyter Notebook, но в облаке Google с GPU-ускорением `Google Colaboratory`. Рекомендуется обучать нейросеть там, так как это быстрее по времени. В ноутбуках (`*.ipynb`) присутствуют ячейки кода для нормальной работы с Google Colaboratory. Если Вы будете работать на локальном ПК, не исполняйте эти ячейки.
 
-## Acknowledgments
-While training a neural network, the author studied too, having completed the course on [building deep neural networks using Python](https://www.asozykin.ru/courses/nnpython) from Andrei Sozykin. The author was sometimes inspired from the code shown in  example sections in the course materials.
+## Благодарности
+Обучая нейронную сеть распознавать изображения, автор обучился и сам, пройдя курс по [построению глубоких нейронных сетей на языке Python](https://www.asozykin.ru/courses/nnpython) от Андрея Созыкина. При написании кода автор иногда вдохновлялся примерами из материалов курса.
 
 <!-- Links -->
 [repo]: https://github.com/yozh2/ClocksOrCrocs
-[russian]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/README.ru-RU.md
+[english]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/README.md
 [dataset_preparation]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/dataset_preparation.ipynb
 [train]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/NN_Train.ipynb
 [test]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/NN_Test.ipynb
