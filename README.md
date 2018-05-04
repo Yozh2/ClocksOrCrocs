@@ -11,7 +11,7 @@ To build a classifier that separates images from the given dataset: a crocodile 
 
 To classify images, the dataset given was divided into training, validation and test samples in the ratio of `0.7`:` 0.15`: `0.15`, respectively. See more in [`dataset_preparation.ipynb`][dataset_preparation].
 
-Based on the pre-trained VGG16 neural network, a classifier was constructed using the ** Keras ** library with the ** Tensorflow ** backend.
+Based on the pre-trained VGG16 neural network, a classifier was constructed using the **Keras** library with the **Tensorflow** backend.
 
 The classifier was trained, the accuracy obtained on the test data is `87.5%`. To increase the accuracy of the classification, fine-tuning of the last layer of the pre-trained VGG16 neural network was made. Achieved classification accuracy: `93.75%` on the test data. See [`NN_Train.ipynb`][train] with a detailed step-by-step description.
 
