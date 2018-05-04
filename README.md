@@ -46,7 +46,7 @@ While training a neural network, the author studied too, having completed the co
 
 <!-- Links -->
 [repo]: https://github.com/yozh2/ClocksOrCrocs
-[russian]: https://github.com/yozh2/ClocksOrCrocs/Readme.ru-RU.md
+[russian]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/README.ru-RU.md
 [dataset_preparation]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/dataset_preparation.ipynb
 [train]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/NN_Train.ipynb
 [test]: https://github.com/Yozh2/ClocksOrCrocs/blob/master/NN_Test.ipynb
